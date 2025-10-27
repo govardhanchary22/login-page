@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            login here
+        </title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: right ;
+                background-image: url(login.jpg);
+                background-repeat: no-repeat;
+                background-position:center;
+                background-attachment: fixed;
+                background-size: cover;
+                color: white;
+            }
+            .main{
+                position:relative;
+                right: 40vh;
+            }
+            form{
+                width: 100px;
+                height: 400px;
+                gap:30px;
+                border: none;
+                border-radius: 5%;
+                display: flex;
+                flex-direction: column;
+                background:transparent;
+                padding: 50px;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 0 40px #131212;
+                
+            }
+            h2{
+                text-align: center;
+                font-size: 35px;
+            }
+            label{
+                font-size: 18px;
+            }
+            input{
+                padding: 20px;
+                font-size: 15px;
+                background:transparent;
+                border:solid 1px #b1946a;
+                margin-top: -10px;
+                border-radius: 8px;
+                color:white;
+            }
+            ::placeholder{
+                color: aliceblue;
+            }
+            .login{
+                padding: 10px;
+                border-radius: 7px;
+                border: none;
+                font-size: 15px;
+                font-weight: 600;
+                transition: all 0.2s ease;
+            }
+            .login:active{
+                transform: scale(0.9);
+            }
+            .login:hover {
+                height: 100vh;
+                background: linear-gradient(-60deg,#B1946A,#6b7249,#65674F,#8b945d,#B1946A);
+                background-size: 800% 800%;
+                animation: waveBtn 4s ease infinite;
+            }
+            @keyframes waveBtn {
+             0% { background-position: 0% 25%; }
+            25% { background-position: 25% 50%; }
+            50% { background-position: 50% 75%; }
+            75% { background-position: 75% 100%; }
+            100% { background-position: 100% 0%; }
+            
+            }
+            .error{
+                text-align: center;
+            }
+            .success{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <form id="loginForm" >
+                <h2>
+                    login here
+                </h2>
+                <label for="email">Enter your email</label>
+                <input type="email" id="username" placeholder="Email or Phone" required />
+                <label for="password">Enter your password </label>
+                <input type="password"  id="password" placeholder="Password" required />
+                <button class="login" >login </button>
+                <div id="errorMsg" class="error"></div>
+            </form>
+        </div>
+        <script>
+            const loginForm = document.getElementById('loginForm');
+            const errorMsg = document.getElementById('errorMsg');
+
+            const validUsername = "govardhan@gmail.com";
+            const validPassword = "pass123";
+        
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value;
+
+                if (username === validUsername && password === validPassword) {
+                errorMsg.className = 'success';
+                errorMsg.textContent = "Login successful! Redirecting...";
+                setTimeout(() => {
+                    window.location.href = "new1.html";
+                }, 1500);
+                } else {
+                errorMsg.className = 'error';
+                errorMsg.textContent = "Invalid username or password.";
+                }
+            });
+        </script>
+    </body>
+</html>
